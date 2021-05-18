@@ -2,12 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <body>
     <h4>
-      Redirecting to <a id="target_url" href="">?</span>
+      Source and tool have movoed, redirecting to <a id="target_url" href="">?</a> in <span id="iter"></span> secondes.
       <script type="text/javascript">
         var target_url = "https://edamontology.github.io/edam-browser/"+window.location.hash;
         document.getElementById('target_url').textContent = target_url;
         document.getElementById('target_url').href=target_url;
-        window.location.href=target_url;
+        var iter=3;
+        function countdown() {
+          document.getElementById('iter').textContent = iter;
+          if (iter==0)
+            window.location.href=target_url;
+          else
+            window.setTimeout( countdown, 1000 ); 
+          iter-=1;
+        }
+        countdown();
       </script>
     </h4>
   <body>
